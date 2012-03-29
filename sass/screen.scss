@@ -85,7 +85,7 @@ table {
   .title {
     display: block;
     height: 50px;
-    margin-top: 100px;
+    margin-top: 50px;
     position: relative;
     border-bottom: 2px dashed #333333;
   }
@@ -259,10 +259,36 @@ table {
 }
 
 .msg {
+  background: none repeat scroll 0 0 #000000;
+  @include border-radius(30px);
+  color: #fff;
+  font-size: 18px;
+  line-height: 40px;
+  margin-top: 30px;
+  padding: 8px 18px;
+  position: relative;
+  width: 96%;
+  .default {
+      display: block;
+      height: 48px;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: 48px;
+    }
   &.alert {
-
+    background: none repeat scroll 0 0 #913232;
+    
+    .icon-e {
+      background:transparent url(../img/ok_no.png) -48px -1px no-repeat ;
+      @extend .default;      
+    }
   }
   &.success {
-    
+    background: none repeat scroll 0 0 #32915D;
+    .icon-s {
+      background:transparent url(../img/ok_no.png) left -1px no-repeat;
+      @extend .default;
+    }
   }
 }
