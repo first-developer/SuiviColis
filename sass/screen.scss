@@ -1,6 +1,132 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
 
-@import "compass/reset";
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding";
+@import "compass/css3/border-radius";
+
+
+// To generate css equivalent to the blueprint css but with your
+// configuration applied, uncomment:
+// @include blueprint
+
+// If you are doing a lot of stylesheet concatenation, it is suggested
+// that you scope your blueprint styles, so that you can better control
+// what pages use blueprint when stylesheets are concatenated together.
+body.bp {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+  // Remove the scaffolding when you're ready to start doing visual design.
+  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+}
+
+form.bp {
+  @include blueprint-form;
+  // You'll probably want to remove the scaffolding once you start styling your site.
+  @include blueprint-scaffolding; }
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
+body.two-col {
+  #container {
+    @include container; }
+  #header, #footer {
+    @include column($blueprint-grid-columns); }
+  #sidebar {
+    // One third of the grid columns, rounding down. With 24 cols, this is 8.
+    $sidebar-columns: floor($blueprint-grid-columns / 3);
+    @include column($sidebar-columns); }
+  #content {
+    // Two thirds of the grid columns, rounding up.
+    // With 24 cols, this is 16.
+    $content-columns: ceil(2 * $blueprint-grid-columns / 3);
+    // true means it's the last column in the row
+    @include column($content-columns, true); } }
+
+
+body {
+  background:transparent url('../img/bg.png') repeat;
+}
+
+.header {
+  top: 30px;
+  @include container;
+  height:100px;
+  position: relative;
+
+
+  .logo {
+    background: url("../img/logo.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 50px;
+    left: -280px;
+    position: relative;
+    top: 37px;
+    width: 1400px;
+  }
+
+
+}
+
+table {
+  border:none;
+}
+
+.main {
+  position: relative;
+  @include container;
+  .title {
+    display: block;
+    height: 50px;
+    margin-top: 100px;
+    position: relative;
+    border-bottom: 2px dashed #333333;
+  }
+  .consult-title {
+    background: url("../img/consult.png") no-repeat scroll 0 0 transparent;
+    @extend .title;
+  }  
+
+  input[type=text] {
+    border: 4px solid #000000;
+    color: #555555;
+    font-size: 30px;
+    height: 40px;
+    margin: 10px;
+    padding: 0 15px;
+    font-weight:bold;
+    width: 288px;
+    @include border-radius(3px);
+  }
+
+  .label {
+    color: #999999;
+    font-size: 20px;
+    margin: 0 50px 0 0;
+  }
+
+  .btn {
+    cursor:pointer;
+    border:none;
+    height: 57px;
+    margin: 10px;
+    width:330px;
+    background: url("../img/btns.png") no-repeat scroll 0 0 transparent;
+    &.consult {
+      background-position:0 -111px;
+    }
+    &.save {
+      background-position:0 1px;
+    }
+    &.return {
+      background-position:0 -54px;
+    }
+  }
+}
