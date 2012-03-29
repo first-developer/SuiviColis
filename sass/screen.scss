@@ -197,30 +197,72 @@ table {
 
 .timeline {
   background: url("../img/timeline.png") repeat-x scroll 0 0 transparent;
-  height:20px;
+  height:280px;
   position: relative;
-  margin-top:150px;
+  margin-top: 150px;
+  ul {
+    list-style:none;
+  }
+  .box {
+    display: block;
+    float: left;
+    height: 265px;
+    margin: 0 14px;
+    position: relative;
+    width: 160px;
+    background: url("../img/box.png") no-repeat scroll -320px 56px transparent;
+    &.current {
+      background-position: -158px 56px;
+    }
+    &.done {
+     background-position: 0px 56px; 
+    }
+    .tip {
+      background: none repeat scroll 0 0 #DDDDDD;
+      border-radius: 5px 5px 5px 5px;
+      bottom: 90px;
+      color: #696969;
+      font-size: 14px;
+      font-weight: bold;
+      left: 13px;
+      line-height: 22px;
+      position: absolute;
+      text-align: center;
+      width: 135px;
+    }
+  }
 
   .car {
     background: url("../img/car.png") no-repeat 0 0 transparent;
     width:175px;
     height:120px;
     display:block;
-
+    position: absolute;
+    left:15px; // position by default
+    top: -79px;
     &.at-0 {
-      
+      left:15px;
     }
     &.at-1 {
-      
+      left:203px; 
     }
     &.at-2 {
-      
+      left:394px;  
     }
     &.at-3 {
-      
+      left:578px; 
     }
     &.at-4 {
-      
+      left:768px; 
     }
+  }
+}
+
+.msg {
+  &.alert {
+
+  }
+  &.success {
+    
   }
 }
